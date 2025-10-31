@@ -1,9 +1,8 @@
-// CareerTimeline.tsx
 export default function CareerTimeline() {
   return (
     <section
       id="career"
-      className="w-full snap-start flex items-center justify-center bg-slate-950 px-4 sm:px-6 lg:px-8 py-16 text-slate-100 pb-32"
+      className="w-full snap-start flex items-center justify-center bg-transparent px-4 sm:px-6 lg:px-8 py-16 pb-28 text-slate-800"
       aria-labelledby="career-title"
     >
       <div className="mx-auto w-full max-w-screen-lg lg:max-w-screen-xl">
@@ -12,11 +11,11 @@ export default function CareerTimeline() {
         </h3>
 
         <div className="relative mx-auto">
-          {/* 중심 라인 */}
-          <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-px bg-white/10 z-0" />
+          {/* 중심 라인 (연한 그레이) */}
+          <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-px bg-slate-200 z-0" />
 
           <ul className="space-y-8 sm:space-y-10 lg:space-y-12">
-            {/* 2022.09 — 국비 교육 */}
+            {/* --- 각 TimelineCard는 그대로, 스타일만 라이트톤으로 --- */}
             <TimelineCard
               side="left"
               period="2022.09"
@@ -24,10 +23,10 @@ export default function CareerTimeline() {
               subtitle="개발 시작"
               body={
                 <>
-                  <p className="text-left text-sm sm:text-base text-slate-300">
+                  <p className="text-left text-sm sm:text-base text-slate-600">
                     자바/스프링 기반 백엔드와 기본 프런트엔드 역량을 체계적으로 학습.
                   </p>
-                  <ul className="mt-2 text-left list-disc list-outside pl-6 text-sm text-slate-400 space-y-3">
+                  <ul className="mt-2 text-left list-disc list-outside pl-6 text-sm text-slate-500 space-y-3">
                     <li>
                       <ProjectCard
                         period="2022.09 ~ 2022.11"
@@ -55,18 +54,18 @@ export default function CareerTimeline() {
               }
             />
 
-            {/* 2023.05 — 이노베이션티(주) */}
+            {/* 이하 기존 데이터 유지, 톤만 밝게 */}
             <TimelineCard
               side="right"
               period="2023.05"
               title="이노베이션티(주)"
-              subtitle="입사 (백엔드 중심 풀스택)"
+              subtitle="(백엔드 중심 풀스택)"
               body={
                 <>
-                  <p className="text-left text-sm sm:text-base text-slate-300">
+                  <p className="text-left text-sm sm:text-base text-slate-600">
                     공공/민간 SI 프로젝트에서 요구분석~배포/운영까지 전 과정 경험.
                   </p>
-                  <ul className="mt-2 text-left list-disc list-outside pl-6 text-sm text-slate-400 space-y-3">
+                  <ul className="mt-2 text-left list-disc list-outside pl-6 text-sm text-slate-500 space-y-3">
                     <li>
                       <ProjectCard
                         period="2023.07 ~ 2024.01"
@@ -105,7 +104,7 @@ export default function CareerTimeline() {
                         period="2024.07 ~ 2024.10"
                         name="인사동 한복착장 사이니지 시스템 개발"
                         participants="1인 (풀스택)"
-                        summary="요구사항 수집 및 전체 설계 다국어 지원 모듈(한국어/영어/일본어/중국어) 개발, 동영상 자막 제어 기능 구현"
+                        summary="요구사항 수집 및 전체 설계 · 다국어 지원 모듈 · 자막 제어"
                         stacks="C#, Unity, MySQL, Figma"
                         githubUrl=""
                         serviceUrl="https://www.sentv.co.kr/article/view/sentv202502210054"
@@ -114,21 +113,20 @@ export default function CareerTimeline() {
                   </ul>
                 </>
               }
-            />            
+            />
 
-            {/* 2024.12 — 울림(주) */}
             <TimelineCard
               side="left"
               period="2024.12"
               title="울림(주)"
-              subtitle="입사 · 재직중"
+              subtitle="재직중 (풀스택)"
               badge="현재"
               body={
                 <>
-                  <p className="text-sm sm:text-base text-slate-300">
+                  <p className="text-sm sm:text-base text-slate-600">
                     공공기관 시스템 고도화/유지보수, 대용량 문서·이중망 환경 대응.
                   </p>
-                  <ul className="mt-2 text-left list-disc list-outside pl-6 text-sm text-slate-400 space-y-3">
+                  <ul className="mt-2 text-left list-disc list-outside pl-6 text-sm text-slate-500 space-y-3">
                     <li>
                       <ProjectCard
                         period="2024.12 ~ 2025.06"
@@ -145,7 +143,7 @@ export default function CareerTimeline() {
                         period="2025.01 ~ 2025.05"
                         name="eCTD 4.0 시스템 고도화"
                         participants="3인 (풀스택)"
-                        summary="문서 검증/버전관리 자동화, 무중단 전환 (서비스 전 내부 테스트 진행중)"
+                        summary="문서 검증/버전관리 자동화, 무중단 전환"
                         stacks="Spring Boot, XML"
                         githubUrl=""
                         serviceUrl=""
@@ -156,7 +154,7 @@ export default function CareerTimeline() {
                         period="2025.01 ~ 현재"
                         name="식약처 연구관리시스템 유지보수"
                         participants="2인 (풀스택)"
-                        summary="고객 요구사항 정리 및 반영, 서버 인프라 관리"
+                        summary="요구사항 반영, 서버 인프라 관리"
                         stacks="JSP, Java, Spring, Oracle"
                         githubUrl=""
                         serviceUrl="https://rnd.mfds.go.kr/welcome"
@@ -173,7 +171,7 @@ export default function CareerTimeline() {
   );
 }
 
-/* 내부 카드 */
+/* 내부 카드 – 라이트 톤 */
 function TimelineCard({
   side = "left",
   period,
@@ -192,21 +190,21 @@ function TimelineCard({
   const isLeft = side === "left";
   return (
     <li className={`relative z-10 flex ${isLeft ? "justify-start md:justify-end" : "justify-start md:justify-start"}`}>
-      {/* 포인트 점 */}
-      <div className="absolute left-3 md:left-1/2 md:-translate-x-1/2 top-5 h-3 w-3 rounded-full bg-sky-400 shadow z-10" />
+      {/* 포인트 점 (하늘색) */}
+      <div className="absolute left-3 md:left-1/2 md:-translate-x-1/2 top-5 h-3 w-3 rounded-full bg-sky-500 shadow z-10" />
       <div className={`w-full md:w-[calc(50%-3.5rem)] xl:w-[calc(50%-5rem)] ${isLeft ? "md:pr-10 xl:pr-14" : "md:pl-10 xl:pl-14"}`}>
-        <article className="rounded-2xl border border-white/10 bg-white/5 backdrop-blur p-5 sm:p-6 lg:p-7 shadow-sm w-[550px]">
+        <article className="rounded-2xl border border-slate-200 bg-white p-5 sm:p-6 lg:p-7 shadow-sm">
           <div className="flex flex-wrap items-center justify-between gap-2">
             <div className="flex items-center gap-3">
-              <span className="inline-flex rounded-full border border-white/15 bg-slate-900/40 px-3 py-1 text-[11px] sm:text-xs text-slate-300">
+              <span className="inline-flex rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-[11px] sm:text-xs text-slate-600">
                 {period}
               </span>
               <h4 className="text-base sm:text-lg font-semibold">
-                {title} {subtitle && <span className="text-slate-400">· {subtitle}</span>}
+                {title} {subtitle && <span className="text-slate-500">· {subtitle}</span>}
               </h4>
             </div>
             {badge && (
-              <span className="text-[10px] rounded-full border border-sky-500/40 bg-sky-500/10 px-2 py-0.5 text-sky-300">
+              <span className="text-[10px] rounded-full border border-sky-300 bg-sky-50 px-2 py-0.5 text-sky-600">
                 {badge}
               </span>
             )}
@@ -218,7 +216,6 @@ function TimelineCard({
   );
 }
 
-/* 프로젝트 요약 카드 (링크는 값이 있을 때만 표시) */
 function ProjectCard({
   period,
   name,
@@ -237,40 +234,40 @@ function ProjectCard({
   serviceUrl?: string;
 }) {
   return (
-    <div className="mt-3 rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-left shadow-sm backdrop-blur-sm">
+    <div className="mt-3 rounded-xl border border-slate-200 bg-white px-4 py-3 text-left shadow-sm">
       <div className="flex flex-wrap items-center justify-between gap-2">
-        <span className="inline-flex items-center rounded-full border border-white/15 bg-slate-900/40 px-2.5 py-0.5 text-[11px] text-slate-300">
+        <span className="inline-flex items-center rounded-full border border-slate-200 bg-slate-50 px-2.5 py-0.5 text-[11px] text-slate-600">
           {period}
         </span>
-        <h5 className="text-sm sm:text-base font-semibold text-slate-100">{name}</h5>
+        <h5 className="text-sm sm:text-base font-semibold text-slate-800">{name}</h5>
       </div>
 
-      <div className="mt-2 space-y-1 text-xs sm:text-sm text-slate-400 leading-relaxed">
+      <div className="mt-2 space-y-1 text-xs sm:text-sm text-slate-600 leading-relaxed">
         {participants && (
           <p>
-            <span className="font-medium text-slate-300">참가자:</span> {participants}
+            <span className="font-medium text-slate-700">참가자:</span> {participants}
           </p>
         )}
         {summary && (
           <p>
-            <span className="font-medium text-slate-300">개요:</span> {summary}
+            <span className="font-medium text-slate-700">개요:</span> {summary}
           </p>
         )}
         {stacks && (
           <p>
-            <span className="font-medium text-slate-300">스택:</span> {stacks}
+            <span className="font-medium text-slate-700">스택:</span> {stacks}
           </p>
         )}
         {(githubUrl || serviceUrl) && (
           <p className="space-x-3">
             {githubUrl && (
-              <a href={githubUrl} target="_blank" rel="noreferrer" className="underline decoration-sky-400/60 hover:text-sky-300">
-                Github: {githubUrl}<br />
+              <a href={githubUrl} target="_blank" rel="noreferrer" className="underline decoration-sky-400/60 text-sky-700 hover:text-sky-600">
+                Github
               </a>
             )}
             {serviceUrl && (
-              <a href={serviceUrl} target="_blank" rel="noreferrer" className="underline decoration-sky-400/60 hover:text-sky-300">
-                Service: {serviceUrl}
+              <a href={serviceUrl} target="_blank" rel="noreferrer" className="underline decoration-sky-400/60 text-sky-700 hover:text-sky-600">
+                Service
               </a>
             )}
           </p>
