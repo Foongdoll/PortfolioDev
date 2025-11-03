@@ -92,23 +92,23 @@ const exampleAboutData: AboutData = {
       title: "인사동 한복착장 사이니지 시스템",
       problem: "네트워크 불안정으로 영상 중단 및 수동 콘텐츠 관리",
       actions: [
-        "Redis 캐시 및 콘텐츠 스케줄러 설계",
-        "파일버전 기반 롤백/배포 자동화",
-        "다국어 자막 및 관광 API 연동",
-        "WebSocket 기반 Unity 동기화 프로토콜 구축"
+        "콘텐츠 캐시 및 재생 스케줄러 설계로 네트워크 의존도 최소화"
+        , "다국어(한·영·중·일) 자막 모듈 설계 및 구현"
+        , "Oracle 제공 관광 API 연동"
+        , "메뉴의 각 이벤트별 영상, 자막 싱크 제어"
       ],
-      result: "재생 민원 70% 감소, 배포 속도 60% 향상",
+      result: "재생 민원 70% 감소, 외국인 관광객 이용률 30% 향상",
       metrics: [
-        "재생 실패율 3.1% → 0.6%",
-        "콘텐츠 롤아웃 −60%",
-        "배포 오류 0건 (3개월)"
+        "메뉴 간 이미지 렌더링 속도 향상 및 동영상 끊김 현상 감소",
+        "재생 실패율 3.1 % → 0.6 %",
+        "콘텐츠 롤아웃 시간 –60 %"
       ],
       links: []
     }
   ],
 
   timeline: [
-    { date: "2022.09", title: "풀스택 부트캠프 수료 (900시간)", note: "Java, Spring, React 기반" },
+    { date: "2022.09", title: "Spring 풀스택 과정 수료 (900시간)", note: "Java, Spring, React 기반" },
     { date: "2023.05", title: "이노베이션티 입사", note: "백엔드 및 풀스택 개발 담당" },
     { date: "2024.07", title: "DevOps-Hub 개인 프로젝트 개발", note: "형상관리·배포 자동화 플랫폼" },
     { date: "2025.01", title: "Flowin 기획 및 디자인", note: "라이프 매니지먼트·AI 플래너 앱" }
@@ -133,7 +133,7 @@ const exampleAboutData: AboutData = {
     { label: "Blog", url: "https://dailyon.vercel.app" }
   ],
 
-  ctas: [    
+  ctas: [
     { label: "💻 GitHub", href: "https://github.com/Foongdoll" },
     { label: "🧾 이력서 다운로드", href: "/resume.pdf" }
   ]
