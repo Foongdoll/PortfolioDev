@@ -1,8 +1,10 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import CareerTimeline from "../components/common/careerTimeline/CareerTimeline";
 import ProjectSlider from "../components/common/projectslider/ProjectSlider";
+import { useNavigate } from "react-router-dom";
 
 export default function Home() {
+  const nav = useNavigate();
   const [logo, setLogo] = useState<string>("");
   const [mainTxt, setMainTxt] = useState<string>("");
   const [subTxt, setSubTxt] = useState<string[]>([]);
@@ -140,6 +142,9 @@ export default function Home() {
               <li>NestJS 모듈화 & 테스트</li>
               <li>AWS 배포 자동화/모니터링</li>
             </ul>
+            <button className="border-2 border-[#eee] cursor-pointer rounded-3xl" onClick={() => {nav("/techlog")}}>
+              기술 노트 보러가기
+            </button>
           </div>
         </div>
       </section>
