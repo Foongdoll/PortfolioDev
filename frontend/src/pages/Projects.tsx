@@ -46,8 +46,8 @@ const SIDE_PROJECTS: SideProject[] = [
       "Calendar",
       "Offline-first",
     ],
-    cover: "src/assets/icon.ico",
-    phase: { plan: 100, design: 90, build: 80, ship: 60 },
+    cover: "/note1.png",
+    phase: { plan: 100, design: 100, build: 100, ship: 80 },
     highlights: [
       "폴더 트리·노트 메타·실시간 마크다운 미리보기를 묶은 듀얼 패널 편집 경험과 자동 저장 흐름을 구축했습니다.",
       "플래시카드를 폴더별로 분류하고 즉시 편집/학습/플립 전환이 가능한 학습 모드를 설계했습니다.",
@@ -72,7 +72,7 @@ const SIDE_PROJECTS: SideProject[] = [
     type: "App",
     stack: ["TypeScript", "React 18", "Electron 31", "Chart.js 4", "Node.js"],
     tags: ["Fintech", "Multi-currency", "Desktop", "Solo"],
-    phase: { plan: 90, design: 85, build: 80, ship: 60 },
+    phase: { plan: 70, design: 65, build: 50, ship: 0 },
     highlights: [
       "Electron 메인 프로세스에서 entries.jsonl/fxrates.json 등을 원자적으로 관리해 완전 로컬 퍼시스턴스를 구현, 민감 데이터를 외부 전송 없이 보관.",
       "거래·환전·보유자산 3단 뷰와 토스트/확인 모달을 통해 데스크톱에 최적화된 워크플로를 설계.",
@@ -90,6 +90,7 @@ const SIDE_PROJECTS: SideProject[] = [
       "Charts·Stats·Insights 패널로 기간별 수익·지출·계좌 잔액을 시각화하여 행동 가능한 지표 제공.",
       "환전 카드와 HoldingsPanel CRUD로 실제 환전·주식 거래 흐름까지 한 앱에서 기록.",
     ],
+    cover: "/fundledger1.png"
   },
   {
     id: "dailyon",
@@ -116,7 +117,7 @@ const SIDE_PROJECTS: SideProject[] = [
       "OpenAPI",
     ],
     tags: ["AI", "PWA", "Productivity", "Spring Boot", "React"],
-    phase: { plan: 90, design: 85, build: 65, ship: 40 },
+    phase: { plan: 90, design: 85, build: 65, ship: 0 },
     highlights: [
       "로컬 3B + 클라우드 7B 모델을 오케스트레이션해 메모 요약·태그 추천을 실시간으로 제공했습니다.",
       "드래그앤드롭 메모 보드와 카테고리별 커스텀 필드 엔진으로 다양한 기록 포맷을 한 화면에서 구성했습니다.",
@@ -133,6 +134,7 @@ const SIDE_PROJECTS: SideProject[] = [
       "layout 패치 API와 낙관적 업데이트, dnd-kit의 `arrayMove`를 활용해 보드 좌표를 서버와 동기화했습니다.",
       "로컬 경량 모델과 클라우드 대형 모델을 분기하는 AI 오케스트레이터에 캐시와 우선순위 큐를 더해 지연과 비용을 최적화했습니다.",
     ],
+    cover: "/dailyon.png"
   },
 ];
 
@@ -253,7 +255,7 @@ export default function Projects() {
     );
 
   return (
-    <div className="w-full min-h-screen bg-gradient-to-b from-sky-50 via-white to-indigo-50 text-slate-800">
+    <div className="overflow-hidden w-full min-h-screen bg-gradient-to-b from-sky-50 via-white to-indigo-50 text-slate-800">
       {/* Hero */}
       <header className="mx-auto max-w-7xl px-6 pt-12 pb-6">
         <div className="flex items-center gap-3">
