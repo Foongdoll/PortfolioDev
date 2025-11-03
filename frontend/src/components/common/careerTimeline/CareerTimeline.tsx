@@ -34,8 +34,7 @@ export default function CareerTimeline() {
                         participants="1인 (풀스택)"
                         summary="JSP/Servlet으로 전시·경매 관리 기능을 구현한 학습 프로젝트"
                         stacks="JSP, Servlet, MySQL"
-                        githubUrl="https://github.com/Foongdoll/JSP-Project"
-                        serviceUrl="http://49.142.157.251:9090/green2209J_10/artMain.art"
+                        url={[{ label: "Github", url: "https://github.com/Foongdoll/JSP-Project" }, { label: "사이트", url: "http://49.142.157.251:9090/green2209J_10/artMain.art" }]}
                       />
                     </li>
                     <li>
@@ -45,8 +44,7 @@ export default function CareerTimeline() {
                         participants="1인 (풀스택)"
                         summary="CGV 유사 예매/조회 기능, 세션 및 CRUD 연습"
                         stacks="Spring, JSP, MySQL"
-                        githubUrl="https://github.com/Foongdoll/Spring-Project"
-                        serviceUrl="http://49.142.157.251:9090/green2209S_10/"
+                        url={[{ label: "Github", url: "https://github.com/Foongdoll/Spring-Project" }, { label: "사이트", url: "http://49.142.157.251:9090/green2209S_10/" }]}
                       />
                     </li>
                   </ul>
@@ -72,9 +70,8 @@ export default function CareerTimeline() {
                         name="선문대학교 학사정보 리뉴얼"
                         participants="2인 (풀스택)"
                         summary="VB → C# 포팅, 공통 모듈 재설계 및 성능 개선"
-                        stacks="C#, .NET, MS-SQL, IIS"
-                        githubUrl=""
-                        serviceUrl="https://sws.sunmoon.ac.kr/Login.aspx"
+                        stacks="C#, .NET, MS-SQL, IIS"                        
+                        url={[{ label: "사이트", url: "https://sws.sunmoon.ac.kr/Login.aspx" }]}
                       />
                     </li>
                     <li>
@@ -84,8 +81,7 @@ export default function CareerTimeline() {
                         participants="1인 (풀스택)"
                         summary="Spring Legacy 기반 기능 보강 및 유지보수"
                         stacks="Java, Spring, JSP, Oracle, Linux"
-                        githubUrl="https://github.com/Foongdoll/inno_seogu (보안상 소스는 private 입니다.)"
-                        serviceUrl="https://gyeyak.seo.incheon.kr/contract/"
+                        url={[{ label: "사이트", url: "https://gyeyak.seo.incheon.kr/contract/" }]}
                       />
                     </li>
                     <li>
@@ -95,8 +91,7 @@ export default function CareerTimeline() {
                         participants="4인 (백엔드, 앱/관리자 프론트 풀스택 개발)"
                         summary="JWT/OAuth 인증, 사용자 데이터 처리 최적화, 앱 개발 (스토어 배포중)"
                         stacks="Spring Boot, MySQL, REST API, JWT/OAuth, React Native, React"
-                        githubUrl=""
-                        serviceUrl="https://www.fillme.co.kr/"
+                        url={[{ label: "소개 사이트", url: "https://www.fillme.co.kr/" }, { label: "플레이스토어", url: "https://play.google.com/store/apps/details?id=com.linkerverse.fillme&hl=ko" }, { label: "앱스토어", url: "https://apps.apple.com/kr/app/fillme-1%EB%B6%84-%EA%B1%B4%EA%B0%95%EC%A7%84%EB%8B%A8%EA%B3%BC-%EB%A7%9E%EC%B6%A4%ED%98%95-%EC%86%94%EB%A3%A8%EC%85%98-%EC%84%9C%EB%B9%84%EC%8A%A4/id6742218333" }]}
                       />
                     </li>
                     <li>
@@ -106,8 +101,7 @@ export default function CareerTimeline() {
                         participants="1인 (풀스택)"
                         summary="요구사항 수집 및 전체 설계 · 다국어 지원 모듈 · 자막 제어"
                         stacks="C#, Unity, MySQL, Figma"
-                        githubUrl=""
-                        serviceUrl="https://www.sentv.co.kr/article/view/sentv202502210054"
+                        url={[{ label: "관련 기사", url: "https://www.sentv.co.kr/article/view/sentv202502210054" }]}
                       />
                     </li>
                   </ul>
@@ -134,8 +128,7 @@ export default function CareerTimeline() {
                         participants="5인 (풀스택)"
                         summary="Nexacro + Spring Boot 기반 기능 고도화 및 운영"
                         stacks="Nexacro, Spring Boot"
-                        githubUrl=""
-                        serviceUrl="https://medi.qia.go.kr/index"
+                        url={[{ label: "사이트", url: "https://medi.qia.go.kr/index" }]}
                       />
                     </li>
                     <li>
@@ -145,8 +138,6 @@ export default function CareerTimeline() {
                         participants="3인 (풀스택)"
                         summary="문서 검증/버전관리 자동화, 무중단 전환"
                         stacks="Spring Boot, XML"
-                        githubUrl=""
-                        serviceUrl=""
                       />
                     </li>
                     <li>
@@ -156,8 +147,7 @@ export default function CareerTimeline() {
                         participants="2인 (풀스택)"
                         summary="요구사항 반영, 서버 인프라 관리"
                         stacks="JSP, Java, Spring, Oracle"
-                        githubUrl=""
-                        serviceUrl="https://rnd.mfds.go.kr/welcome"
+                        url={[{ label: "사이트", url: "https://rnd.mfds.go.kr/welcome" }]}
                       />
                     </li>
                   </ul>
@@ -222,16 +212,14 @@ function ProjectCard({
   participants,
   summary,
   stacks,
-  githubUrl,
-  serviceUrl,
+  url
 }: {
   period: string;
   name: string;
   participants?: string;
   summary?: string;
   stacks?: string;
-  githubUrl?: string;
-  serviceUrl?: string;
+  url?: { label: string, url: string }[]
 }) {
   return (
     <div className="mt-3 rounded-xl border border-slate-200 bg-white px-4 py-3 text-left shadow-sm">
@@ -258,21 +246,17 @@ function ProjectCard({
             <span className="font-medium text-slate-700">스택:</span> {stacks}
           </p>
         )}
-        {(githubUrl || serviceUrl) && (
-          <p className="space-x-3">
-            {githubUrl && (
-              <a href={githubUrl} target="_blank" rel="noreferrer" className="underline decoration-sky-400/60 text-sky-700 hover:text-sky-600">
-                Github
+        {(url) && (
+          < p className="space-x-3" >
+            {url.map((e) => (
+              <a href={e.url} target="_blank" rel="noreferrer" className="underline decoration-sky-400/60 text-sky-700 hover:text-sky-600">
+                #{e.label}
               </a>
-            )}
-            {serviceUrl && (
-              <a href={serviceUrl} target="_blank" rel="noreferrer" className="underline decoration-sky-400/60 text-sky-700 hover:text-sky-600">
-                Service
-              </a>
-            )}
+            ))}
           </p>
-        )}
+        )
+        }
       </div>
-    </div>
+    </div >
   );
 }

@@ -58,7 +58,7 @@ export default function ProjectSlider() {
       githubUrl: "https://github.com/Foongdoll/FillMe",
       serviceUrl:
         "https://apps.apple.com/kr/app/fillme-1%EB%B6%84/id1640130403",
-      screenshots: [{ src: "/fillme1.png", desc: "dddddddddddddddddddddddd" }, { src: "/fillme2.png", desc: "" }, { src: "/fillme3.png", desc: "" }],
+      screenshots: [{ src: "/fillme1.png", desc: "플레이스토어" }, { src: "/fillme2.png", desc: "소개사이트" }, { src: "/fillme3.png", desc: "앱스토어" }],
       bg: "from-sky-600/20 to-slate-800/30",
     },
     {
@@ -85,12 +85,12 @@ export default function ProjectSlider() {
       githubUrl: "https://github.com/Foongdoll/DevOps-Hub",
       serviceUrl: "http://13.124.87.223/portfolio",
       screenshots: [
-        { src: "/devops1.png", desc: "" },
+        { src: "/devops1.png", desc: "메인" },
         { src: "/devops2.png", desc: "" },
-        { src: "/devops3.png", desc: "" },
-        { src: "/devops4.png", desc: "" },
-        { src: "/devops5.png", desc: "" },
-        { src: "/devops6.png", desc: "" },
+        { src: "/devops3.png", desc: "SSH에서 조회한 폴더 구조로 생성한 트리" },
+        { src: "/devops4.png", desc: "커밋기록조회" },
+        { src: "/devops5.png", desc: "변경파일조회 및 제어" },
+        { src: "/devops6.png", desc: "커밋한 파일 변경 코드 조회" },
       ],
       bg: "from-indigo-500/20 to-slate-800/30",
     },
@@ -145,7 +145,7 @@ export default function ProjectSlider() {
       githubUrl: "",
       serviceUrl: "https://rnd.mfds.go.kr/welcome",
       screenshots: [
-        { src: "/mfds1.png", desc: "" },        
+        { src: "/mfds1.png", desc: "" },
       ],
       bg: "from-red-500/20 to-slate-300/30",
     },
@@ -325,7 +325,7 @@ export default function ProjectSlider() {
                         style={{ width: `100%` }}
                       >
                         {shots && shots.length > 0 ? (
-                          shots.map((item, idx) => (
+                          shots.map((item, idx) => (<>                            
                             <div
                               key={`${p.title}-${idx}`}
                               className="basis-full shrink-0 h-full w-full flex items-center justify-center bg-white"
@@ -340,6 +340,7 @@ export default function ProjectSlider() {
                                 }}
                               />
                             </div>
+                          </>
                           ))
                         ) : (
                           <div className="basis-full shrink-0 h-full w-full flex items-center justify-center text-slate-400 text-sm">
@@ -375,7 +376,6 @@ export default function ProjectSlider() {
                               />
                             ))}
                           </div>
-
                         </>
                       )}
                     </div>
