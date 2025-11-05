@@ -6,6 +6,7 @@ type ProjectSummary = {
   path: string;
   description: string;
   focus: string[];
+  codeSamples?: Array<{ title: string; code: string; language: string }>;
 };
 
 type TechStack = {
@@ -14,7 +15,6 @@ type TechStack = {
   summary: string;
   description: string[];
   projects: ProjectSummary[];
-  codeSamples?: Array<{ title: string; code: string; language: string }>;
 };
 
 const typeScriptChatGatewaySample = `import {
@@ -437,75 +437,137 @@ public class SecurityConfig {
 }
 `;
 
+const dockerComposeAikitSample = `version: "3.9"
+
+services:
+  qdrant:
+    image: qdrant/qdrant:latest
+    container_name: qdrant
+    restart: always
+    ports:
+      - "6333:6333"   # REST API / gRPC
+      - "6334:6334"   # internal communication
+    volumes:
+      - ./qdrant_storage:/qdrant/storage
+    environment:
+      QDRANT__STORAGE__STORAGE_PATH: "/qdrant/storage"
+      QDRANT__SERVICE__GRPC_PORT: 6334
+      QDRANT__SERVICE__HTTP_PORT: 6333
+`;
+
+const dockerComposeAiValidatorSample = `version: "3.9"
+services:
+  qdrant:
+    image: qdrant/qdrant:latest
+    ports:
+      - "6333:6333"   # REST API
+      - "6334:6334"   # gRPC
+    volumes:
+      - ./qdrant_storage:/qdrant/storage
+`;
+
+const turboRepoConfigSample = `{
+  "$schema": "https://turborepo.com/schema.json",
+  "tasks": {
+    "build": {
+      "dependsOn": ["^build"],
+      "inputs": ["$TURBO_DEFAULT$", ".env*"],
+      "outputs": [".next/**", "!.next/cache/**"]
+    },
+    "lint": {
+      "dependsOn": ["^lint"]
+    },
+    "check-types": {
+      "dependsOn": ["^check-types"]
+    },
+    "dev": {
+      "cache": false,
+      "persistent": true
+    }
+  }
+}
+`;
+
 const techStacks: TechStack[] = [
   {
     id: "typescript",
     label: "TypeScript",
     summary:
-      "NestJS, React, and Electron working together for realtime collaboration, file delivery, and desktop polish.",
+      "NestJS, React, Electron을 엮어 실시간 협업, 파일 전송, 데스크톱 경험을 안정화한 과정을 담았습니다.",
     description: [
-      "Flowin Server keeps conversations, notes, and calendar events under one socket namespace without leaking state across rooms.",
-      "WithU Backend normalizes every album asset regardless of origin and keeps partner access rules inside a single query builder.",
-      "The desktop and web surfaces share transport code: Electron shell bridges reconnection, while StudyGround's axios layer shapes responses for TanStack Query.",
+      "Flowin Server는 단일 소켓 네임스페이스 안에서 채팅, 노트, 캘린더 이벤트를 룸 단위로 격리해 실시간 협업 품질을 유지합니다.",
+      "WithU Backend는 업로드 출처가 달라도 앨범 자산을 서버에서 정규화하고, 파트너 권한을 하나의 쿼리 빌더에서 판별합니다.",
+      "WithU 프런트와 Electron 셸은 동일한 전송 계층을 공유해 재연결 로직을 재사용하고, StudyGround의 Axios 래퍼는 TanStack Query 결과 객체를 표준화합니다.",
+      "TanStack Query 캐시 키와 응답 어댑터를 통일해 API 스키마가 바뀌어도 타입 안정성과 캐시 무결성을 함께 지켰습니다.",
     ],
     projects: [
       {
         name: "Flowin Server (NestJS)",
         path: "public/sideprojects/flowinServer/flowin_server/src/chat",
-        description: "Realtime collaboration API that serves chat, notes, and calendar features from one NestJS server.",
+        description: "NestJS 기반 실시간 협업 API로 채팅, 노트, 캘린더를 단일 게이트웨이에서 제공하며, 룸 격리로 이벤트 충돌을 막았습니다.",
         focus: [
-          "Namespace pins prevent cross-room events and the gateway pushes a ready signal so clients join explicitly.",
-          "Rooms cap their in-memory history at 200 messages, making persistence sync predictable after deploys.",
+          "네임스페이스와 룸을 명시적으로 분리하고 게이트웨이가 먼저 ready 신호를 발송해 클라이언트가 의도적으로 조인하도록 강제했습니다.",
+          "메시지 히스토리를 룸당 200개로 제한해 메모리 사용량과 배포 후 동기화 시간을 예측 가능하게 유지했습니다.",
+          "수신 메시지에는 서버에서 식별자와 타임스탬프를 부여해 재전송 순서를 보장하고, 클라이언트 재접속 시에도 정렬이 깨지지 않습니다.",
+        ],
+        codeSamples: [
+          {
+            title: "Flowin Server - chat.gateway.ts (소켓 게이트웨이)",
+            language: "typescript",
+            code: typeScriptChatGatewaySample,
+          },
         ],
       },
       {
         name: "WithU Backend (NestJS)",
         path: "public/sideprojects/withu/be/WithU-BE/src/album",
-        description: "Partner album module that balances CDN delivery, local uploads, and partner visibility rules.",
+        description: "파트너 전용 앨범 모듈로 CDN, 로컬 업로드, 접근 제어를 한 서비스 계층에서 조율합니다.",
         focus: [
-          "`normalizeAlbumUrls` rebuilds every asset link server-side so the UI never mixes environment specific prefixes.",
-          "Partner discovery happens once, letting the same query builder return personal and partner albums with pagination and search.",
+          "`normalizeAlbumUrls` 함수로 환경별 CDN 경로를 서버에서 정규화해 프런트가 절대경로만 다루도록 했습니다.",
+          "파트너 사용자 탐색을 1회 수행한 뒤 공통 쿼리 빌더에 주입해 개인/파트너 앨범을 같은 페이지네이션에서 다룹니다.",
+          "검색, 정렬, 페이지네이션을 JPA 쿼리 빌더로 결합해 N+1 없이 상세 정보를 한 번에 로드합니다.",
+        ],
+        codeSamples: [
+          {
+            title: "WithU Backend - album.service.ts (앨범 서비스)",
+            language: "typescript",
+            code: typeScriptAlbumServiceSample,
+          },
         ],
       },
       {
         name: "WithU Front (Electron + React)",
         path: "public/sideprojects/withu/fe/WithU-FE/src",
-        description: "Electron shell that reuses the web client and adds resilient socket reconnection hooks.",
+        description: "Electron 셸과 React 앱을 결합해 웹 클라이언트와 동일한 기능을 오프라인 친화적으로 제공합니다.",
         focus: [
-          "JWT claims ride along with the reconnection handshake so missed messages can be replayed on resume.",
-          "Socket events fan out via `CustomEvent`, keeping React components unaware of the Electron preload layer.",
+          "JWT 클레임을 재연결 시점에도 함께 보내 누락된 메시지를 서버에서 필터링하고 보충합니다.",
+          "소켓 이벤트를 `CustomEvent`로 브로드캐스트해 React 컴포넌트가 Electron preload 레이어와 직접 결합되지 않게 했습니다.",
+          "자동 재연결과 지수 백오프 설정으로 일시적인 네트워크 단절에서도 세션이 끊기지 않습니다.",
+        ],
+        codeSamples: [
+          {
+            title: "WithU Front - Socket.ts (재연결 로직)",
+            language: "typescript",
+            code: typeScriptSocketClientSample,
+          },
         ],
       },
       {
         name: "StudyGround Front (React)",
         path: "public/sideprojects/studyground/fe/StudyGround/src/api/Axios.tsx",
-        description: "Learning dashboard that centralizes network error handling and shapes all responses consistently.",
+        description: "학습 대시보드의 네트워크 계층을 표준화해 오류 처리와 응답 가공을 일관되게 유지합니다.",
         focus: [
-          "The axios interceptor routes every backend error through a global handler to surface instant toasts.",
-          "Shared request helpers enforce a single result signature so caches stay type-safe across features.",
+          "Axios 인터셉터에서 백엔드 오류를 전역 핸들러로 전달해 사용자에게 즉시 토스트로 안내합니다.",
+          "공통 요청 헬퍼가 응답 형태를 통일해 TanStack Query 캐시가 타입 안전하게 동작합니다.",
+          "`apiRequest`와 `apiMultipartRequest`를 분리해 파일 전송과 일반 요청 모두에서 재사용 가능한 래퍼를 제공했습니다.",
         ],
-      },
-    ],
-    codeSamples: [
-      {
-        title: "Flowin Server - chat.gateway.ts",
-        language: "typescript",
-        code: typeScriptChatGatewaySample,
-      },
-      {
-        title: "WithU Backend - album.service.ts",
-        language: "typescript",
-        code: typeScriptAlbumServiceSample,
-      },
-      {
-        title: "WithU Front - Socket.ts",
-        language: "typescript",
-        code: typeScriptSocketClientSample,
-      },
-      {
-        title: "StudyGround Front - Axios.tsx",
-        language: "typescript",
-        code: typeScriptAxiosSample,
+        codeSamples: [
+          {
+            title: "StudyGround Front - Axios.tsx (요청 래퍼)",
+            language: "typescript",
+            code: typeScriptAxiosSample,
+          },
+        ],
       },
     ],
   },
@@ -513,62 +575,135 @@ const techStacks: TechStack[] = [
     id: "java",
     label: "Java (Spring Boot)",
     summary:
-      "Spring Boot services where AI safety checks, vector search, and JWT secured study tools were hardened for production use.",
+      "AI 안전 점검, 벡터 검색, JWT 기반 학습 도구를 운영 환경에서 굳힌 Spring Boot 사례를 정리했습니다.",
     description: [
-      "AI Validator exposes audit friendly filters so support teams can slice message logs without shipping new queries.",
-      "The shared AI utility keeps a lightweight QA cache in Qdrant and records few-shot examples for consistent scoring.",
-      "AIKIT provisions Qdrant collections on demand and reindexes prompts in batches to keep experiments repeatable.",
-      "StudyGround Backend wraps JWT verification into the security chain so learning tools stay locked while chat remains open.",
+      "AI Validator는 세션, 적합도, 기간, 퍼지 검색을 조합한 필터를 제공해 새로운 쿼리를 배포하지 않고도 지원팀이 로그를 분석할 수 있습니다.",
+      "공용 AI 유틸리티는 Qdrant에 QA 캐시와 few-shot 예시를 기록하고 점수 기반 무효화로 응답 품질을 일정하게 유지합니다.",
+      "AIKIT은 Qdrant 컬렉션을 온디맨드로 생성하고 프롬프트를 배치 재인덱싱해 실험을 반복해도 상태를 깨끗하게 유지합니다.",
+      "StudyGround Backend는 JWT 검증을 Spring Security 체인에 삽입해 학습 기능은 보호하면서 채팅과 인증 엔드포인트는 개방합니다.",
+      "공통 유틸리티로 인증, 캐시, 벡터 연산 로직을 모듈화해 각 서비스가 중복 없이 기능을 공유합니다.",
     ],
     projects: [
       {
         name: "AI Validator",
         path: "public/sideprojects/aivalidator/AI_VALIDATOR",
-        description: "Spring Boot service that evaluates chat safety and stores the full assessment trail.",
+        description: "챗봇 안전성을 평가하고 전체 판정 이력을 저장하는 Spring Boot 서비스입니다.",
         focus: [
-          "The controller composes JPA Specifications for session, suitability, time range, and fuzzy search without N+1 surprises.",
-          "`AIUtil` writes both QA cache entries and few-shot training examples into Qdrant with score based invalidation.",
+          "컨트롤러는 세션, 적합도, 기간, 키워드 조건을 JPA Specification으로 조합해도 단일 쿼리로 조회합니다.",
+          "`AIUtil`은 Qdrant에 QA 캐시와 평가 예시를 동시에 기록하고 점수 임계값으로 노이즈를 제거합니다.",
+          "페이지 응답을 DTO로 변환해 프런트와 공유하고, 정렬 파라미터를 노출해 운영 중에도 분석 지표를 확장했습니다.",
+        ],
+        codeSamples: [
+          {
+            title: "AI Validator - ValidatorController.java (로그 조회)",
+            language: "java",
+            code: javaValidatorControllerSample,
+          },
+          {
+            title: "AI Validator - AIUtil.java (Qdrant 캐시)",
+            language: "java",
+            code: javaAiUtilSample,
+          },
         ],
       },
       {
         name: "AIKIT",
         path: "public/sideprojects/aikit/AIkit",
-        description: "RAG playground that lets policy prompts evolve while keeping vector stores tidy.",
+        description: "정책 프롬프트를 실험하고 벡터스토어 상태를 자동으로 유지하는 RAG 실험 도구입니다.",
         focus: [
-          "`QdrantService` estimates embedding dimensions and creates collections automatically before indexing data.",
-          "Batch upserts and context clamping keep token counts predictable across reruns.",
+          "`QdrantService`가 임베딩 차원을 추정해 컬렉션을 자동 생성하고 새 실험마다 재사용합니다.",
+          "배치 업서트와 컨텍스트 클램핑으로 토큰 수를 예측 가능하게 유지해 비용을 통제합니다.",
+          "재인덱싱 루틴을 @Transactional로 감싸 실패 시 롤백해 QA 캐시와 실험 데이터가 어긋나지 않게 했습니다.",
+        ],
+        codeSamples: [
+          {
+            title: "AIKIT - QdrantService.java (벡터스토어 관리)",
+            language: "java",
+            code: javaQdrantServiceSample,
+          },
         ],
       },
       {
         name: "StudyGround Backend",
         path: "public/sideprojects/studyground/be/StudyGroundJava",
-        description: "Learning goals, todos, and flashcards protected by JWT and stateless sessions.",
+        description: "학습 목표, 할 일, 플래시카드를 JWT로 보호하는 Spring Boot 백엔드입니다.",
         focus: [
-          "SecurityFilterChain inserts the JWT filter before username-password auth and separates public chat endpoints.",
-          "BCrypt password encoding is shared through a bean so sign-up and login stay aligned.",
+          "SecurityFilterChain에서 JWT 필터를 UsernamePasswordAuthenticationFilter보다 앞에 두어 토큰 검증을 우선 처리합니다.",
+          "공개 채팅 엔드포인트와 보호된 학습 API를 분리해 권한 정책을 명확히 했습니다.",
+          "BCrypt 비밀번호 인코더와 AuthenticationManager 빈을 분리해 테스트와 운영 환경의 인증 구성을 단순화했습니다.",
+        ],
+        codeSamples: [
+          {
+            title: "StudyGround Backend - SecurityConfig.java (보안 설정)",
+            language: "java",
+            code: javaSecurityConfigSample,
+          },
         ],
       },
     ],
-    codeSamples: [
+  },
+  {
+    id: "devops",
+    label: "DevOps & 배포",
+    summary:
+      "Docker Compose와 Turborepo, CI 파이프라인으로 ML 백엔드와 다중 앱 모노레포를 안정적으로 배포한 경험을 모았습니다.",
+    description: [
+      "AIKIT과 AI Validator는 동일한 Qdrant 설정을 공유해 로컬, 스테이징, 프로덕션에서 같은 환경을 재현합니다.",
+      "Turborepo 캐시 전략과 의존성 그래프로 빌드 시간을 줄이고, 타입 검사와 린트를 병렬 실행합니다.",
+      "Compose 템플릿에 포트 매핑과 볼륨 정책을 명시해 데이터 손실 없이 롤백과 재시작이 가능합니다.",
+      "CI 단계는 테스트, 타입 검사, 린트를 나눠 실패 지점을 명확히 드러내고 캐시를 활용해 반복 실행 비용을 줄입니다.",
+    ],
+    projects: [
       {
-        title: "AI Validator - ValidatorController.java",
-        language: "java",
-        code: javaValidatorControllerSample,
+        name: "AIKIT Docker Compose",
+        path: "public/sideprojects/aikit/AIkit/src/main/resources/static/docker-compose.yml",
+        description: "RAG 실험에서 사용되는 Qdrant를 빠르게 띄우기 위한 Docker Compose 템플릿입니다.",
+        focus: [
+          "컨테이너 이름과 재시작 정책을 고정해 로컬 개발과 배포 스크립트에서 동일한 명령을 재사용합니다.",
+          "HTTP와 gRPC 포트를 모두 노출해 백엔드와 벡터스토어 간 통신 경로를 명확히 했습니다.",
+          "볼륨을 `/qdrant/storage`에 마운트해 임베딩 데이터를 안정적으로 보존합니다.",
+        ],
+        codeSamples: [
+          {
+            title: "AIKIT - docker-compose.yml (Qdrant)",
+            language: "yaml",
+            code: dockerComposeAikitSample,
+          },
+        ],
       },
       {
-        title: "AI Validator - AIUtil.java",
-        language: "java",
-        code: javaAiUtilSample,
+        name: "AI Validator Docker Compose",
+        path: "public/sideprojects/aivalidator/AI_VALIDATOR/src/main/resources/static/docker-compose.yml",
+        description: "안전성 평가 서비스에서도 동일한 Qdrant 구성을 재사용할 수 있도록 Compose를 통일했습니다.",
+        focus: [
+          "서비스 포트 6333/6334를 나눠 노출해 REST와 gRPC 트래픽을 각각 다룹니다.",
+          "볼륨 경로를 프로젝트 루트와 맞춰 로그와 벡터 데이터를 쉽게 백업할 수 있습니다.",
+          "간결한 설정으로 QA 팀이 로컬에서 즉시 벡터스토어를 구동할 수 있도록 문서화했습니다.",
+        ],
+        codeSamples: [
+          {
+            title: "AI Validator - docker-compose.yml (Qdrant)",
+            language: "yaml",
+            code: dockerComposeAiValidatorSample,
+          },
+        ],
       },
       {
-        title: "AIKIT - QdrantService.java",
-        language: "java",
-        code: javaQdrantServiceSample,
-      },
-      {
-        title: "StudyGround Backend - SecurityConfig.java",
-        language: "java",
-        code: javaSecurityConfigSample,
+        name: "DevOps Hub (Turborepo)",
+        path: "public/sideprojects/devops-hub/Devops-hub/turbo.json",
+        description: "다중 앱 모노레포의 빌드, 타입, 린트를 Turborepo에서 orchestration 합니다.",
+        focus: [
+          "의존 앱의 결과를 재사용하도록 `dependsOn`을 정의해 중복 작업을 줄입니다.",
+          "환경 파일 변화만 캐시 무효화 조건에 추가해 빌드 캐시 효율을 극대화했습니다.",
+          "개발 서버 작업은 영구 캐시를 비활성화해 핫 리로드 경험을 해치지 않습니다.",
+        ],
+        codeSamples: [
+          {
+            title: "DevOps Hub - turbo.json (빌드 파이프라인)",
+            language: "json",
+            code: turboRepoConfigSample,
+          },
+        ],
       },
     ],
   },
@@ -586,14 +721,14 @@ export default function TechLog() {
       <header className="border-b border-slate-200 bg-white/80 backdrop-blur">
         <div className="mx-auto flex max-w-6xl flex-col gap-6 px-4 py-16 sm:px-6 lg:flex-row lg:items-end lg:justify-between lg:px-8">
           <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.35em] text-sky-600">Tech Log</p>
-            <h1 className="mt-4 text-4xl font-bold text-slate-900 sm:text-5xl">Stack Insights</h1>
+            <p className="text-xs font-semibold uppercase tracking-[0.35em] text-sky-600">기술 로그</p>
+            <h1 className="mt-4 text-4xl font-bold text-slate-900 sm:text-5xl">스택 인사이트</h1>
             <p className="mt-4 max-w-3xl text-base text-slate-600">
-              Selected highlights from the projects living under <code>public/sideprojects</code>. Pick a stack to see the problem space, lessons learned, and a few representative snippets.
+              스택을 고르면 문제 정의와 해결 과정, 그리고 대표 코드 조각을 바로 확인할 수 있습니다.
             </p>
           </div>
           <div className="rounded-3xl border border-slate-200 bg-white/80 px-5 py-4 text-sm text-slate-600 shadow-sm">
-            All snippets were pulled straight from the repositories and trimmed for clarity. Prism handles the syntax highlighting.
+            모든 코드는 실제 저장소에서 가져와 필요한 부분만 정리했습니다. 문법 하이라이팅은 Prism이 담당하고 있어요.
           </div>
         </div>
       </header>
@@ -616,8 +751,8 @@ type TechListProps = {
 
 function TechList({ techStacks, activeStackId, onSelect }: TechListProps) {
   return (
-    <nav className="rounded-3xl border border-slate-200 bg-white/80 p-6 shadow-sm backdrop-blur" aria-label="Tech stack list">
-      <h2 className="text-sm font-semibold uppercase tracking-wide text-slate-900">Tech Stack</h2>
+    <nav className="rounded-3xl border border-slate-200 bg-white/80 p-6 shadow-sm backdrop-blur" aria-label="기술 스택 목록">
+      <h2 className="text-sm font-semibold uppercase tracking-wide text-slate-900">기술 스택</h2>
       <ul className="mt-6 space-y-2">
         {techStacks.map((stack) => {
           const isActive = stack.id === activeStackId;
@@ -655,7 +790,7 @@ function TechContent({ stack }: TechContentProps) {
       aria-labelledby={`${stack.id}-title`}
     >
       <header className="border-b border-slate-200 pb-8">
-        <span className="text-xs font-semibold uppercase tracking-[0.3em] text-sky-600">Detail</span>
+        <span className="text-xs font-semibold uppercase tracking-[0.3em] text-sky-600">상세</span>
         <h1 id={`${stack.id}-title`} className="mt-4 text-3xl font-bold text-slate-900">
           {stack.label}
         </h1>
@@ -670,7 +805,7 @@ function TechContent({ stack }: TechContentProps) {
 
       {stack.projects.length > 0 && (
         <section className="mt-10 space-y-5">
-          <h2 className="text-sm font-semibold uppercase tracking-[0.2em] text-slate-500">Project Notes</h2>
+          <h2 className="text-sm font-semibold uppercase tracking-[0.2em] text-slate-500">프로젝트 노트</h2>
           <div className="grid gap-4">
             {stack.projects.map((project) => (
               <article
@@ -687,18 +822,17 @@ function TechContent({ stack }: TechContentProps) {
                     <li key={item}>{item}</li>
                   ))}
                 </ul>
+                {project.codeSamples?.map(({ title, code, language }) => (
+                  <div key={title} className="mt-6 space-y-3">
+                    <h4 className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-500">{title}</h4>
+                    <CodeBlock language={language} code={code} />
+                  </div>
+                ))}
               </article>
             ))}
           </div>
         </section>
       )}
-
-      {stack.codeSamples?.map(({ title, code, language }) => (
-        <section key={title} className="mt-10 space-y-4">
-          <h2 className="text-sm font-semibold uppercase tracking-[0.2em] text-slate-500">{title}</h2>
-          <CodeBlock language={language} code={code} />
-        </section>
-      ))}
     </section>
   );
 }

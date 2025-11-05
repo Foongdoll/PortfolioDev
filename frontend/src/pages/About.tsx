@@ -139,10 +139,6 @@ const exampleAboutData: AboutData = {
   ]
 };
 
-type AboutProps = {
-  aboutData?: AboutData;
-};
-
 /* 🎨 라이트 테마용 카드 베이스 */
 const cardBase =
   "group rounded-2xl border border-slate-200 bg-white shadow-sm transition-transform duration-200 ease-out hover:-translate-y-0.5 hover:shadow-md focus-within:-translate-y-0.5 focus-within:shadow-md";

@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import CareerTimeline from "../components/common/careerTimeline/CareerTimeline";
 import ProjectSlider from "../components/common/projectslider/ProjectSlider";
 import { useNavigate } from "react-router-dom";
@@ -10,8 +10,7 @@ export default function Home() {
   const [subTxt, setSubTxt] = useState<string[]>([]);
 
   const sectionIds = useMemo(() => ["top", "more", "experience", "techlog"], []);
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const sectionRefs = useRef<Record<string, HTMLElement | null>>({});
+  const [, setCurrentIndex] = useState(0);
 
   useEffect(() => {
     let mounted = true;

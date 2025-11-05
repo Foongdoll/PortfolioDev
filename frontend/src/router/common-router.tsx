@@ -1,9 +1,11 @@
+import { lazy } from "react";
 import { Route } from "react-router-dom";
-import Home from "../pages/Home";
-import About from "../pages/About";
-import Contract from "../pages/Contract";
-import Projects from "../pages/Projects";
-import TechLog from "../pages/TechLog";
+
+const Home = lazy(() => import("../pages/Home"));
+const About = lazy(() => import("../pages/About"));
+const Contact = lazy(() => import("../pages/Contact"));
+const Projects = lazy(() => import("../pages/Projects"));
+const TechLog = lazy(() => import("../pages/TechLog"));
 
 export default function CommonRouter() {
 
@@ -11,7 +13,7 @@ export default function CommonRouter() {
         <>        
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
-            <Route path="/contract" element={<Contract />} />            
+            <Route path="/contact" element={<Contact />} />            
             <Route path="/projects" element={<Projects />} />
             <Route path="/techlog" element={<TechLog />} />
         </>
