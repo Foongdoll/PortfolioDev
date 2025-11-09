@@ -1,0 +1,344 @@
+%PDF-1.4
+%
+1 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+2 0 obj
+<< /Length 2278 >>
+stream
+BT
+/F1 11 Tf
+14 TL
+1 0 0 1 56 762 Tm
+(SH.dev Portfolio Snapshot) Tj
+T*
+(==========================) Tj
+T*
+(Tagline \(translated\): Full-stack developer who delivers tangible value for users and) Tj
+T*
+(teams.) Tj
+T*
+(Hero message: Create. Build. Deploy. The site introduces SH.dev as developer Shin) Tj
+T*
+(Hyunwoo.) Tj
+T*
+(Learning focus highlights: React Query caching strategies, NestJS modular testing, and) Tj
+T*
+(AWS deployment automation.) Tj
+T*
+() Tj
+T*
+(Guiding Values) Tj
+T*
+(--------------) Tj
+T*
+(    - Analyze problems structurally and pursue root causes.) Tj
+T*
+(    - Form hypotheses with data and validate them rigorously.) Tj
+T*
+(    - Simplify cross-team communication and build trust through documentation.) Tj
+T*
+(    - Treat readable, maintainable code as the greatest productivity lever.) Tj
+T*
+(    - Prioritize observability in every system.) Tj
+T*
+(    - Aim for user experiences that stay simple yet powerful.) Tj
+T*
+() Tj
+T*
+(Impact Metrics) Tj
+T*
+(--------------) Tj
+T*
+(    - API P95 latency reduced from 900ms to 280ms for the FillMe service.) Tj
+T*
+(    - Crash-free mobile sessions improved from 96% to 99.2% on FillMe.) Tj
+T*
+(    - Deployment lead time cut by 70% through the DevOps-Hub pipeline.) Tj
+T*
+(    - SSH/SFTP error rate lowered by 90% via DevOps-Hub enhancements.) Tj
+T*
+(    - Signage playback failure rate reduced from 3.1% to 0.6% for the Insadong tourism) Tj
+T*
+(      system.) Tj
+T*
+() Tj
+T*
+(Core Skills) Tj
+T*
+(-----------) Tj
+T*
+(Frontend: React, Vite, Tailwind CSS, Zustand, TanStack Query, TypeScript.) Tj
+T*
+(Backend: Spring Boot, NestJS, MySQL, Redis, JPA, JWT, REST API design.) Tj
+T*
+(Mobile & Desktop: React Native, Electron, Expo.) Tj
+T*
+(DevOps: Docker, GitHub Actions, AWS EC2 and S3, Nginx, Terraform, PM2.) Tj
+T*
+(Additional: CI/CD practices, OAuth2, Clean Architecture, Git, Progressive Web Apps,) Tj
+T*
+(Accessibility.) Tj
+T*
+() Tj
+T*
+(Current Focus and Next Steps) Tj
+T*
+(----------------------------) Tj
+T*
+(Now: Optimizing Electron plus React desktop apps, advancing AI summarization and Q&A,) Tj
+T*
+(refining Flowin planner UI and performance.) Tj
+T*
+(Next: Adding LLM-based personal assistant features, modularizing CI/CD workflows, and) Tj
+T*
+(fully automating AWS infrastructure with Terraform.) Tj
+T*
+ET
+endstream
+endobj
+3 0 obj
+<< /Type /Page /Parent 10 0 R /MediaBox [0 0 595 842] /Contents 2 0 R /Resources << /Font << /F1 1 0 R >> >> >>
+endobj
+4 0 obj
+<< /Length 2809 >>
+stream
+BT
+/F1 11 Tf
+14 TL
+1 0 0 1 56 762 Tm
+() Tj
+T*
+(Professional Timeline) Tj
+T*
+(---------------------) Tj
+T*
+(2022.09 - Began development journey through a 900-hour Java full-stack bootcamp) Tj
+T*
+(covering Java, Spring, and foundational frontend skills.) Tj
+T*
+(      - Solo JSP exhibition and auction web project: implemented exhibition and auction) Tj
+T*
+(        management \(JSP, Servlet, MySQL\).) Tj
+T*
+(      - Solo Spring-based movie ticketing web project: CGV-style booking and CRUD) Tj
+T*
+(        exercises \(Spring, JSP, MySQL\).) Tj
+T*
+() Tj
+T*
+(2023.05 - Joined InnovationT as a back-end focused full-stack developer handling) Tj
+T*
+(public and private SI projects end-to-end.) Tj
+T*
+(      - Sunmoon University academic information renewal: ported VB to C#, redesigned) Tj
+T*
+(        shared modules, and improved performance \(C#, .NET, MS-SQL, IIS\).) Tj
+T*
+(      - Incheon Seo-gu contract information upgrade: enhanced Spring Legacy features and) Tj
+T*
+(        maintenance \(Java, Spring, JSP, Oracle, Linux\).) Tj
+T*
+(      - FillMe health supplement recommendation app: delivered JWT/OAuth auth, optimized) Tj
+T*
+(        user data flows, and shipped React Native + admin web apps \(Spring Boot, MySQL,) Tj
+T*
+(        JWT/OAuth, React Native, React\).) Tj
+T*
+(      - Insadong Hanbok signage system: gathered requirements, designed system end-to-) Tj
+T*
+(        end, added multilingual support and subtitle controls \(C#, Unity, MySQL, Figma\).) Tj
+T*
+() Tj
+T*
+(2024.12 - Joined ULLIM as a full-stack engineer for public sector systems) Tj
+T*
+(modernization and maintenance in high-volume, dual-network environments.) Tj
+T*
+(      - Animal drug management system upgrade: Nexacro plus Spring Boot enhancements and) Tj
+T*
+(        operations support.) Tj
+T*
+(      - eCTD 4.0 system upgrade: automated document validation and version management) Tj
+T*
+(        with zero-downtime transitions \(Spring Boot, XML\).) Tj
+T*
+(      - MFDS research management maintenance: handled requirements and server) Tj
+T*
+(        infrastructure \(JSP, Java, Spring, Oracle\).) Tj
+T*
+() Tj
+T*
+(Flagship Deliverables) Tj
+T*
+(---------------------) Tj
+T*
+(FillMe - AI-driven health recommendation app tackling API latency and session drops.) Tj
+T*
+(      - Redesigned auth with JWT plus OAuth2 and stabilized sessions.) Tj
+T*
+(      - Accelerated MySQL queries with indexing to trim recommendation latency by 69%.) Tj
+T*
+(      - Introduced GitHub Actions to EC2 automated deployments and refined) Tj
+T*
+(        recommendation logic using user behavior logs.) Tj
+T*
+(      - Results: crash-free sessions at 99.2%, P95 latency cut from 900ms to 280ms,) Tj
+T*
+(        seven-day retention up 18%.) Tj
+T*
+() Tj
+T*
+(DevOps-Hub - Consolidated Git, SSH, and SFTP workspace reducing terminal juggling.) Tj
+T*
+ET
+endstream
+endobj
+5 0 obj
+<< /Type /Page /Parent 10 0 R /MediaBox [0 0 595 842] /Contents 4 0 R /Resources << /Font << /F1 1 0 R >> >> >>
+endobj
+6 0 obj
+<< /Length 2582 >>
+stream
+BT
+/F1 11 Tf
+14 TL
+1 0 0 1 56 762 Tm
+(      - Built SSH2 real-time terminal with SFTP tree UI and automated Git workflows) Tj
+T*
+(        \(commit, push, stage\).) Tj
+T*
+(      - Unified Electron and NestJS environment with Docker plus GitHub Actions CI/CD.) Tj
+T*
+(      - Results: deployment lead time down 70%, SSH/SFTP errors down 90%, session) Tj
+T*
+(        switching 2.5x faster.) Tj
+T*
+() Tj
+T*
+(Insadong Hanbok signage system - Stabilized multimedia signage and localization.) Tj
+T*
+(      - Designed offline content cache and playback scheduler to reduce network) Tj
+T*
+(        dependence.) Tj
+T*
+(      - Implemented Korean, English, Chinese, and Japanese subtitle modules with Oracle) Tj
+T*
+(        tourism API integration.) Tj
+T*
+(      - Results: playback complaints down 70%, international visitor usage up 30%,) Tj
+T*
+(        rollout time shortened by 60%.) Tj
+T*
+() Tj
+T*
+(Side Projects Snapshot) Tj
+T*
+(----------------------) Tj
+T*
+(Note - Electron productivity suite \(Jun-Jul 2025, active\).) Tj
+T*
+(      - Electron plus React offline workspace merging markdown notes, flashcards, and) Tj
+T*
+(        scheduling with dual-panel editing and autosave.) Tj
+T*
+(      - Flashcard folders with instant edit, study, and flip transitions, plus) Tj
+T*
+(        PDF/CSV/XLS export from calendar views.) Tj
+T*
+(      - Legacy JSON storage migrated into split metadata and body files, normalizing) Tj
+T*
+(        image paths and cleaning unused assets.) Tj
+T*
+() Tj
+T*
+(Flowin Ledger - Desktop finance manager for KRW and USD freelancers \(Sep-Oct 2025,) Tj
+T*
+(active\).) Tj
+T*
+(      - Electron local storage keeping entries.jsonl and fxrates.json atomic for offline) Tj
+T*
+(        security.) Tj
+T*
+(      - Three-pane view for transactions, currency exchange, and asset holdings with) Tj
+T*
+(        modal-driven workflows and Chart.js analytics.) Tj
+T*
+(      - Auto converts USD trades to KRW via a rate resolver, highlights missing FX data,) Tj
+T*
+(        and unifies exchange plus holdings CRUD flows.) Tj
+T*
+() Tj
+T*
+(Dailyon - AI productivity companion PWA \(since Aug 2024, active\).) Tj
+T*
+(      - Hybrid local 3B and cloud 7B models orchestrated for real-time note summaries) Tj
+T*
+(        and tag recommendations.) Tj
+T*
+(      - Drag-and-drop board with JSON-defined category fields, optimistic layout sync,) Tj
+T*
+(        and dnd-kit powered reordering.) Tj
+T*
+(      - JWT refresh automation with Axios interceptors plus modular Spring Boot and) Tj
+T*
+(        WebSocket pipelines for live scheduling and chat.) Tj
+T*
+() Tj
+T*
+(Key Links) Tj
+T*
+ET
+endstream
+endobj
+7 0 obj
+<< /Type /Page /Parent 10 0 R /MediaBox [0 0 595 842] /Contents 6 0 R /Resources << /Font << /F1 1 0 R >> >> >>
+endobj
+8 0 obj
+<< /Length 250 >>
+stream
+BT
+/F1 11 Tf
+14 TL
+1 0 0 1 56 762 Tm
+(---------) Tj
+T*
+(    - GitHub: https://github.com/Foongdoll) Tj
+T*
+(    - Portfolio: https://foongdoll.dev) Tj
+T*
+(    - Blog: https://dailyon.vercel.app) Tj
+T*
+(    - Resume download path: /resume.pdf) Tj
+T*
+ET
+endstream
+endobj
+9 0 obj
+<< /Type /Page /Parent 10 0 R /MediaBox [0 0 595 842] /Contents 8 0 R /Resources << /Font << /F1 1 0 R >> >> >>
+endobj
+10 0 obj
+<< /Type /Pages /Kids [3 0 R 5 0 R 7 0 R 9 0 R] /Count 4 >>
+endobj
+11 0 obj
+<< /Type /Catalog /Pages 10 0 R >>
+endobj
+xref
+0 12
+0000000000 65535 f 
+0000000015 00000 n 
+0000000085 00000 n 
+0000002415 00000 n 
+0000002542 00000 n 
+0000005403 00000 n 
+0000005530 00000 n 
+0000008164 00000 n 
+0000008291 00000 n 
+0000008592 00000 n 
+0000008719 00000 n 
+0000008795 00000 n 
+trailer
+<< /Size 12 /Root 11 0 R >>
+startxref
+8846
+%%EOF
